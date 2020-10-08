@@ -75,6 +75,10 @@
   display: flex;
   flex-flow: row;
 }
+.flex-column {
+  display: flex;
+  flex-flow: column;
+}
 .align-center {
   display: flex;
   align-items: center;
@@ -90,6 +94,10 @@
 .justify-between {
   display: flex;
   justify-content: space-between;
+}
+.justify-around {
+  display: flex;
+  justify-content: space-around;
 }
 
 .border-radius {
@@ -145,4 +153,17 @@
 .btn-green {
   background: #63b860;
   width: 50%;
+}
+
+.popupDel {
+  height: 150px;
+  width: 400px;
+}
+.yesno {
+  height: 30px;
+  width: 50px;
+}
+
+.invisible {
+  visibility: hidden;
 }

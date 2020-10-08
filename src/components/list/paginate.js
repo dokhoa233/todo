@@ -1,5 +1,9 @@
 import React from "react";
 import "./main.css";
+import Back from "@material-ui/icons/ChevronLeft";
+import Next from "@material-ui/icons/ChevronRight";
+import First from "@material-ui/icons/FirstPage";
+import Last from "@material-ui/icons/LastPage";
 
 const PAGE_SIZE = 5;
 
@@ -14,6 +18,8 @@ export default class Paginate extends React.Component {
     };
     this.onBack = this.onBack.bind(this);
     this.onNext = this.onNext.bind(this);
+    this.onFirst = this.onFirst.bind(this);
+    this.onLast = this.onLast.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,6 +46,12 @@ export default class Paginate extends React.Component {
       });
     }
   }
+  onFirst() {
+    this.props.onChangePage && this.props.onChangePage(1);
+  }
+  onLast() {
+    this.props.onChangePage && this.props.onChangePage(this.state.totalPage);
+  }
 
   render() {
     const from = (this.state.currentPage - 1) * PAGE_SIZE + 1;
@@ -54,9 +66,21 @@ export default class Paginate extends React.Component {
           {from} to {count} of {this.state.totalCount}
         </div>
         <div className="flex-row">
-          <div onClick={this.onBack}>Back .</div> Page {this.state.currentPage}{" "}
-          of {Math.ceil(this.state.totalPage)}{" "}
-          <div onClick={this.onNext}>. Next</div>
+          <div onClick={this.onFirst}>
+            <First />
+          </div>
+          <div onClick={this.onBack}>
+            <Back />
+          </div>{" "}
+          <div className="align-center">
+            Page {this.state.currentPage} of {Math.ceil(this.state.totalPage)}{" "}
+          </div>
+          <div onClick={this.onNext}>
+            <Next />
+          </div>
+          <div onClick={this.onLast}>
+            <Last />
+          </div>
         </div>
       </div>
     );

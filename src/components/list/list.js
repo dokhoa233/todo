@@ -2,8 +2,10 @@ import React from "react";
 import "./main.css";
 import Item from "./item";
 import Paginate from "./paginate";
+
 const PAGE_SIZE = 5;
 let curPage = 1;
+
 export default class Add extends React.Component {
   constructor(props) {
     super(props);
@@ -49,7 +51,6 @@ export default class Add extends React.Component {
       this.data.length = PAGE_SIZE;
     }
     this.forceUpdate();
-    console.log("khai");
   }
 
   onSearch(textSearch) {
@@ -122,7 +123,6 @@ export default class Add extends React.Component {
   };
   onSave = (data) => {
     this.data[this.data.findIndex((e) => e.num === data.num)] = data;
-    console.log(this.data);
   };
 
   renderListData() {

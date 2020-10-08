@@ -1,6 +1,8 @@
 import React from "react";
 import "./main.css";
 
+let popUpDel = false;
+
 const buttonColor = {
   High: "btn-red",
   Medium: "btn-blue",
@@ -125,10 +127,48 @@ export default class Search extends React.Component {
       this.setState({ data: newData });
     }
   };
+  yes() {
+    popUpDel = true;
+  }
+  no() {
+    popUpDel = false;
+  }
+
+  renderpopUpDel() {
+    return (
+      <div
+        className={`popupDel border-radius btn-default align-center flex-column justify-around invisible`}
+        // style={{ visibility: "hidden" }}
+        ref={(ref) => (this.popup = ref)}
+      >
+        <div> Are you sure? </div>
+        <div className="flex-row justify-center align-center">
+          <div
+            className="yesno btn  border-radius btn-blue justify-center align-center"
+            onClick={this.yes}
+          >
+            {" "}
+            Yes{" "}
+          </div>
+          <div
+            className="yesno btn border-radius btn-red justify-center align-center"
+            onClick={this.no}
+          >
+            {" "}
+            No{" "}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   onDelete = () => {
-    this.props.onDelete && this.props.onDelete(this.state.data.num);
-    this.setState({ data: null });
+    // this.popup && (this.popup.style.visibility = "visible");
+    this.popup.classList.toggle("invisible");
+    // if (popUpDel === true) {
+    //   this.props.onDelete && this.props.onDelete(this.state.data.num);
+    //   this.setState({ data: null });
+    // }
   };
 
   onCancel = () => {
@@ -145,6 +185,7 @@ export default class Search extends React.Component {
         {this.renderName()}
         {this.renderLevel()}
         {this.renderAction()}
+        {this.renderpopUpDel()}
       </div>
     );
   }
