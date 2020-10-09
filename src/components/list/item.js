@@ -1,6 +1,6 @@
 import React from "react";
 import "./main.css";
-import popUpDelele from "./popupdelete";
+import PopUpDelele from "./popupdelete";
 
 let popUpDel = false;
 
@@ -40,9 +40,8 @@ export default class Search extends React.Component {
       return (
         <div className="level-action justify-center align-center">
           <div
-            className={`btn ${
-              buttonColor[this.state.data.level]
-            } border-radius btn-b btn-small`}
+            className={`btn ${buttonColor[this.state.data.level]
+              } border-radius btn-b btn-small`}
           >
             {this.state.data.level}
           </div>
@@ -76,6 +75,8 @@ export default class Search extends React.Component {
       );
     }
   }
+  
+
   renderAction() {
     if (this.isEditMode) {
       return (
@@ -113,7 +114,16 @@ export default class Search extends React.Component {
       );
     }
   }
-
+  onDelete = () => {
+    // this.popup && (this.popup.style.visibility = "visible");
+    // this.popup.classList.toggle("invisible");
+    this.isShowPopUpDel = true;
+    if (popUpDel === true) {
+      this.props.onDelete && this.props.onDelete(this.state.data.num);
+      this.setState({ data: null });
+    }
+    this.forceUpdate()
+  };
   onEdit = () => {
     this.isEditMode = true;
     this.changed = {};
@@ -129,14 +139,7 @@ export default class Search extends React.Component {
     }
   };
 
-  onDelete = () => {
-    // this.popup && (this.popup.style.visibility = "visible");
-    // this.popup.classList.toggle("invisible");
-    if (popUpDel === true) {
-      this.props.onDelete && this.props.onDelete(this.state.data.num);
-      this.setState({ data: null });
-    }
-  };
+  
 
   onCancel = () => {
     this.isEditMode = false;
@@ -151,7 +154,7 @@ export default class Search extends React.Component {
     }
   };
   renderPopUpDel() {
-    return <popUpDelele onPopUp={this.onPopUp} />;
+    return <PopUpDelele onPopUp={this.onPopUp} />;
   }
 
   render() {
@@ -163,7 +166,7 @@ export default class Search extends React.Component {
         {this.renderName()}
         {this.renderLevel()}
         {this.renderAction()}
-        {this.renderPopUpDel()}
+        {this.isShowPopUpDel ? this.renderPopUpDel() : null}
       </div>
     );
   }

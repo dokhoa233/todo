@@ -1,6 +1,6 @@
 import React from "react";
 import "./main.css";
-export default class popUpDelete extends React.Component {
+export default class PopUpDelele extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -16,7 +16,7 @@ export default class popUpDelete extends React.Component {
     return (
       <div
         className={`popupDel border-radius btn-default align-center flex-column justify-around`}
-        style={{ visibility: "hidden" }}
+        // style={{ visibility: "visi" }}
         ref={(ref) => (this.popup = ref)}
       >
         <div> Are you sure? </div>
