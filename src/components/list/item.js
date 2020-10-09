@@ -1,5 +1,6 @@
 import React from "react";
 import "./main.css";
+import popUpDelele from "./popupdelete";
 
 let popUpDel = false;
 
@@ -127,54 +128,31 @@ export default class Search extends React.Component {
       this.setState({ data: newData });
     }
   };
-  yes() {
-    popUpDel = true;
-  }
-  no() {
-    popUpDel = false;
-  }
-
-  renderpopUpDel() {
-    return (
-      <div
-        className={`popupDel border-radius btn-default align-center flex-column justify-around invisible`}
-        // style={{ visibility: "hidden" }}
-        ref={(ref) => (this.popup = ref)}
-      >
-        <div> Are you sure? </div>
-        <div className="flex-row justify-center align-center">
-          <div
-            className="yesno btn  border-radius btn-blue justify-center align-center"
-            onClick={this.yes}
-          >
-            {" "}
-            Yes{" "}
-          </div>
-          <div
-            className="yesno btn border-radius btn-red justify-center align-center"
-            onClick={this.no}
-          >
-            {" "}
-            No{" "}
-          </div>
-        </div>
-      </div>
-    );
-  }
 
   onDelete = () => {
     // this.popup && (this.popup.style.visibility = "visible");
-    this.popup.classList.toggle("invisible");
-    // if (popUpDel === true) {
-    //   this.props.onDelete && this.props.onDelete(this.state.data.num);
-    //   this.setState({ data: null });
-    // }
+    // this.popup.classList.toggle("invisible");
+    if (popUpDel === true) {
+      this.props.onDelete && this.props.onDelete(this.state.data.num);
+      this.setState({ data: null });
+    }
   };
 
   onCancel = () => {
     this.isEditMode = false;
     this.forceUpdate();
   };
+
+  onPopUp = (yesno) => {
+    if (yesno === "yes") {
+      popUpDel = true;
+    } else {
+      popUpDel = false;
+    }
+  };
+  renderPopUpDel() {
+    return <popUpDelele onPopUp={this.onPopUp} />;
+  }
 
   render() {
     if (!this.state.data) return null;
@@ -185,7 +163,7 @@ export default class Search extends React.Component {
         {this.renderName()}
         {this.renderLevel()}
         {this.renderAction()}
-        {this.renderpopUpDel()}
+        {this.renderPopUpDel()}
       </div>
     );
   }
