@@ -40,9 +40,8 @@ export default class Search extends React.Component {
       return (
         <div className="level-action justify-center align-center">
           <div
-            className={`btn ${
-              buttonColor[this.state.data.level]
-            } border-radius btn-b btn-small`}
+            className={`btn ${buttonColor[this.state.data.level]
+              } border-radius btn-b btn-small`}
           >
             {this.state.data.level}
           </div>
@@ -76,6 +75,8 @@ export default class Search extends React.Component {
       );
     }
   }
+  
+
   renderAction() {
     if (this.isEditMode) {
       return (
@@ -113,7 +114,16 @@ export default class Search extends React.Component {
       );
     }
   }
-
+  onDelete = () => {
+    // this.popup && (this.popup.style.visibility = "visible");
+    // this.popup.classList.toggle("invisible");
+    this.isShowPopUpDel = true;
+    if (popUpDel === true) {
+      this.props.onDelete && this.props.onDelete(this.state.data.num);
+      this.setState({ data: null });
+    }
+    this.forceUpdate()
+  };
   onEdit = () => {
     this.isEditMode = true;
     this.changed = {};
@@ -129,6 +139,7 @@ export default class Search extends React.Component {
     }
   };
 
+<<<<<<< HEAD
   onDelete = () => {
     // this.popup && (this.popup.style.visibility = "visible");
     // this.popup.classList.toggle("invisible");
@@ -139,6 +150,9 @@ export default class Search extends React.Component {
     }
     this.forceUpdate();
   };
+=======
+  
+>>>>>>> a820b395776e71775fa30c27c3541e4a3535458e
 
   onCancel = () => {
     this.isEditMode = false;
@@ -166,6 +180,10 @@ export default class Search extends React.Component {
         {this.isShowPopUpDel ? this.renderPopUpDel() : null}
         {this.renderLevel()}
         {this.renderAction()}
+<<<<<<< HEAD
+=======
+        {this.isShowPopUpDel ? this.renderPopUpDel() : null}
+>>>>>>> a820b395776e71775fa30c27c3541e4a3535458e
       </div>
     );
   }
