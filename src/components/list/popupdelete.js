@@ -1,20 +1,16 @@
 import React from "react";
 import "./main.css";
 export default class PopUpDelele extends React.Component {
-  constructor(props) {
-    super(props);
-    this.onPopUp = this.onPopUp.bind(this);
-  }
-  yes() {
+  yes = () => {
     this.props.onPopUp && this.props.onPopUp("yes");
-  }
-  no() {
-    this.props.onPopUp && this.props.onPopUp("no");
-  }
+  };
+  no = () => {
+    this.props.onPopUp && this.props.onPopUp(null);
+  };
 
   render() {
     return (
-      <div class="groundPopup">
+      <div class="groundPopup" onClick={this.no}>
         <div
           className={`popupDel border-radius btn-default align-center flex-column justify-around`}
           // style={{ visibility: "visible" }}
