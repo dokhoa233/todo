@@ -1,6 +1,6 @@
 import React from "react";
 import "./main.css";
-import popUpDelele from "./popupdelete";
+import PopUpDelele from "./popupdelete";
 
 let popUpDel = false;
 
@@ -132,10 +132,12 @@ export default class Search extends React.Component {
   onDelete = () => {
     // this.popup && (this.popup.style.visibility = "visible");
     // this.popup.classList.toggle("invisible");
+    this.isShowPopUpDel = true;
     if (popUpDel === true) {
       this.props.onDelete && this.props.onDelete(this.state.data.num);
       this.setState({ data: null });
     }
+    this.forceUpdate();
   };
 
   onCancel = () => {
@@ -147,11 +149,11 @@ export default class Search extends React.Component {
     if (yesno === "yes") {
       popUpDel = true;
     } else {
-      popUpDel = false;
+      this.isShowPopUpDel = false;
     }
   };
   renderPopUpDel() {
-    return <popUpDelele onPopUp={this.onPopUp} />;
+    return <PopUpDelele onPopUp={this.onPopUp} />;
   }
 
   render() {
@@ -161,9 +163,9 @@ export default class Search extends React.Component {
       <div className="list-item list-height flex-row border-radius">
         <div className="list-stt justify-center">{num}</div>
         {this.renderName()}
+        {this.isShowPopUpDel ? this.renderPopUpDel() : null}
         {this.renderLevel()}
         {this.renderAction()}
-        {this.renderPopUpDel()}
       </div>
     );
   }
