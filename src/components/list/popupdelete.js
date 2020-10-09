@@ -1,7 +1,16 @@
 import React from "react";
 import "./main.css";
 export default class PopUpDelele extends React.Component {
+<<<<<<< HEAD
   yes = () => {
+=======
+  constructor(props) {
+    super(props);
+    this.yes = this.yes.bind(this)
+    this.no = this.no.bind(this)
+  }
+  yes() {
+>>>>>>> b17baca9b695951e6aa72cb0a0d2f7ec194cf8ba
     this.props.onPopUp && this.props.onPopUp("yes");
   };
   no = () => {

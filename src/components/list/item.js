@@ -128,6 +128,7 @@ export default class Search extends React.Component {
     }
   };
 
+<<<<<<< HEAD
   onDelete = () => {
     // this.popup && (this.popup.style.visibility = "visible");
     // this.popup.classList.toggle("invisible");
@@ -136,6 +137,9 @@ export default class Search extends React.Component {
       isShowPopUpDel: true,
     });
   };
+=======
+  
+>>>>>>> b17baca9b695951e6aa72cb0a0d2f7ec194cf8ba
 
   onCancel = () => {
     this.isEditMode = false;
