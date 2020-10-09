@@ -3,7 +3,8 @@ import "./main.css";
 export default class PopUpDelele extends React.Component {
   constructor(props) {
     super(props);
-    this.onPopUp = this.onPopUp.bind(this);
+    this.yes = this.yes.bind(this)
+    this.no = this.no.bind(this)
   }
   yes() {
     this.props.onPopUp && this.props.onPopUp("yes");

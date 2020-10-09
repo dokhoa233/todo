@@ -139,20 +139,7 @@ export default class Search extends React.Component {
     }
   };
 
-<<<<<<< HEAD
-  onDelete = () => {
-    // this.popup && (this.popup.style.visibility = "visible");
-    // this.popup.classList.toggle("invisible");
-    this.isShowPopUpDel = true;
-    if (popUpDel === true) {
-      this.props.onDelete && this.props.onDelete(this.state.data.num);
-      this.setState({ data: null });
-    }
-    this.forceUpdate();
-  };
-=======
   
->>>>>>> a820b395776e71775fa30c27c3541e4a3535458e
 
   onCancel = () => {
     this.isEditMode = false;
@@ -180,10 +167,6 @@ export default class Search extends React.Component {
         {this.isShowPopUpDel ? this.renderPopUpDel() : null}
         {this.renderLevel()}
         {this.renderAction()}
-<<<<<<< HEAD
-=======
-        {this.isShowPopUpDel ? this.renderPopUpDel() : null}
->>>>>>> a820b395776e71775fa30c27c3541e4a3535458e
       </div>
     );
   }
