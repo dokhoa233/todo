@@ -28,9 +28,11 @@ export default class Todo extends React.Component {
 
   renderTitle() {
     return (
-      <div className="header">
-        <div className="title">Project 01 - To Do List</div>
-        <div className="sub-title">ReactJs</div>
+      <div>
+        <div className="header">
+          <div className="title">Project 01 - To Do List</div>
+          <div className="sub-title">ReactJs</div>
+        </div>
       </div>
     );
   }
@@ -38,6 +40,10 @@ export default class Todo extends React.Component {
     return (
       <div>
         <div>{this.renderTitle()}</div>
+        <div className="menu fal fa-bars btn-default border-radius justify-start main-list width20"></div>
+        <div className="hide">
+          <Add style={{ visibility: "hidden" }} />
+        </div>
         <div className="search-add flex-row">
           <Search onSearch={this.onSearch} onSort={this.onSort} />
           <Add onAdd={this.onAdd} />

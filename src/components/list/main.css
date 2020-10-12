@@ -178,3 +178,18 @@
 .invisible {
   visibility: hidden;
 }
+
+.width20 {
+  width: 1%;
+  height: 1%;
+  margin: 0px 25px;
+}
+.hide {
+  /* display: hidden; */
+  margin: 0 25px;
+}
+div.menu:hover + .hide {
+  display: block;
+  background: wheat;
+  width: 50%;
+}
